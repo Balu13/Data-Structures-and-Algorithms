@@ -1,40 +1,17 @@
-========================================================================
-    CONSOLE APPLICATION : MaxPairwiseProduct Project Overview
-========================================================================
+Lesson 3 Assignment of Algorithmic Toolbox on Coursera
 
-AppWizard has created this MaxPairwiseProduct application for you.
+Problem
 
-This file contains a summary of what you will find in each of the files that
-make up your MaxPairwiseProduct application.
+Given a sequence of non-negative integers a(0),…,a(n−1), find the maximum pairwise product, that is, the largest integer that can be obtained by multiplying two different elements from the sequence (or, more formally, max(a(i)*a(j)) where 0≤i≠j≤n−1). Different elements here mean a(i) and a(j) with i≠j (it can be the case that a(i)=a(j)).
 
+Input format
 
-MaxPairwiseProduct.vcxproj
-    This is the main project file for VC++ projects generated using an Application Wizard.
-    It contains information about the version of Visual C++ that generated the file, and
-    information about the platforms, configurations, and project features selected with the
-    Application Wizard.
+The first line of the input contains an integer n. The next line contains n non-negative integers a0,…,an−1 (separated by spaces).
 
-MaxPairwiseProduct.vcxproj.filters
-    This is the filters file for VC++ projects generated using an Application Wizard. 
-    It contains information about the association between the files in your project 
-    and the filters. This association is used in the IDE to show grouping of files with
-    similar extensions under a specific node (for e.g. ".cpp" files are associated with the
-    "Source Files" filter).
+Constraints
 
-MaxPairwiseProduct.cpp
-    This is the main application source file.
+2≤n≤2⋅10^5; 0≤a(0),…,a(n−1)≤10^5.
 
-/////////////////////////////////////////////////////////////////////////////
-Other standard files:
+Output format
 
-StdAfx.h, StdAfx.cpp
-    These files are used to build a precompiled header (PCH) file
-    named MaxPairwiseProduct.pch and a precompiled types file named StdAfx.obj.
-
-/////////////////////////////////////////////////////////////////////////////
-Other notes:
-
-AppWizard uses "TODO:" comments to indicate parts of the source code you
-should add to or customize.
-
-/////////////////////////////////////////////////////////////////////////////
+Output a single number — the maximum pairwise product.
