@@ -11,6 +11,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SmallFibonacci", "SmallFibo
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LastDigitFibonacci", "LastDigitFibonacci\LastDigitFibonacci.vcxproj", "{4BC94603-0161-4B96-8AE7-A649A80B67BC}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GreatestCommonDivisor", "GreatestCommonDivisor\GreatestCommonDivisor.vcxproj", "{291C166A-38A3-4546-9BC7-6BF29766BC0B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -51,6 +53,14 @@ Global
 		{4BC94603-0161-4B96-8AE7-A649A80B67BC}.Release|x64.Build.0 = Release|x64
 		{4BC94603-0161-4B96-8AE7-A649A80B67BC}.Release|x86.ActiveCfg = Release|Win32
 		{4BC94603-0161-4B96-8AE7-A649A80B67BC}.Release|x86.Build.0 = Release|Win32
+		{291C166A-38A3-4546-9BC7-6BF29766BC0B}.Debug|x64.ActiveCfg = Debug|x64
+		{291C166A-38A3-4546-9BC7-6BF29766BC0B}.Debug|x64.Build.0 = Debug|x64
+		{291C166A-38A3-4546-9BC7-6BF29766BC0B}.Debug|x86.ActiveCfg = Debug|Win32
+		{291C166A-38A3-4546-9BC7-6BF29766BC0B}.Debug|x86.Build.0 = Debug|Win32
+		{291C166A-38A3-4546-9BC7-6BF29766BC0B}.Release|x64.ActiveCfg = Release|x64
+		{291C166A-38A3-4546-9BC7-6BF29766BC0B}.Release|x64.Build.0 = Release|x64
+		{291C166A-38A3-4546-9BC7-6BF29766BC0B}.Release|x86.ActiveCfg = Release|Win32
+		{291C166A-38A3-4546-9BC7-6BF29766BC0B}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
