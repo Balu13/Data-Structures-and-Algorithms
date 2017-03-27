@@ -27,11 +27,18 @@ unsigned long long get_fibonacci_modulo_fast(unsigned long long n, unsigned long
 
 	unsigned long long m1{ 0 };
 	unsigned long long m2{ 1 };
+	unsigned long long periodLength = 2;
 	for (unsigned long long i = 2; i <= n; ++i)
 	{
 		unsigned long long tmp = (m1 + m2) % m;
 		m1 = m2;
 		m2 = tmp;
+
+		if (m1 == 0 && m2 == 1)
+		{
+			return get_fibonacci_modulo_fast(n % --periodLength, m);
+		}
+		++periodLength;
 	}
 
 	return m2;
