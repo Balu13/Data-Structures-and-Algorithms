@@ -18,8 +18,14 @@ int fibonacci_sum_naive(long long n) {
     return sum % 10;
 }
 
+int fibonacci_sum_naive(long long n)
+{
+	return n % 10;
+}
+
 int main() {
     long long n = 0;
     std::cin >> n;
-    std::cout << fibonacci_sum_naive(n) << '\n';
+    //std::cout << fibonacci_sum_naive(n) << '\n';
+	std::cout << fibonacci_sum_naive(n) << '\n';
 }

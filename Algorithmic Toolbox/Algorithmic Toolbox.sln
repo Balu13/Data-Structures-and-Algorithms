@@ -19,6 +19,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FibonacciModuloM", "Fibonac
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LastDigitFibonacciSum", "LastDigitFibonacciSum\LastDigitFibonacciSum.vcxproj", "{B76F9250-E3EC-43C4-88C7-F298999D25AB}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ChangeMoney", "ChangeMoney\ChangeMoney.vcxproj", "{D0B0A1C5-B6B0-42E0-9EAB-B7D746C059EE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -91,6 +93,14 @@ Global
 		{B76F9250-E3EC-43C4-88C7-F298999D25AB}.Release|x64.Build.0 = Release|x64
 		{B76F9250-E3EC-43C4-88C7-F298999D25AB}.Release|x86.ActiveCfg = Release|Win32
 		{B76F9250-E3EC-43C4-88C7-F298999D25AB}.Release|x86.Build.0 = Release|Win32
+		{D0B0A1C5-B6B0-42E0-9EAB-B7D746C059EE}.Debug|x64.ActiveCfg = Debug|x64
+		{D0B0A1C5-B6B0-42E0-9EAB-B7D746C059EE}.Debug|x64.Build.0 = Debug|x64
+		{D0B0A1C5-B6B0-42E0-9EAB-B7D746C059EE}.Debug|x86.ActiveCfg = Debug|Win32
+		{D0B0A1C5-B6B0-42E0-9EAB-B7D746C059EE}.Debug|x86.Build.0 = Debug|Win32
+		{D0B0A1C5-B6B0-42E0-9EAB-B7D746C059EE}.Release|x64.ActiveCfg = Release|x64
+		{D0B0A1C5-B6B0-42E0-9EAB-B7D746C059EE}.Release|x64.Build.0 = Release|x64
+		{D0B0A1C5-B6B0-42E0-9EAB-B7D746C059EE}.Release|x86.ActiveCfg = Release|Win32
+		{D0B0A1C5-B6B0-42E0-9EAB-B7D746C059EE}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
