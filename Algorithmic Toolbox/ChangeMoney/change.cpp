@@ -4,20 +4,33 @@
 
 int coins[] { 1, 5, 10 };
 
-int get_change(int m)
+int get_change_naive(int m)
 {
 	int numberOfCoins{ 0 };
+
+	while (m >= 10)
+	{
+		++numberOfCoins;
+		m -= 10;
+	}
+	while (m >= 5)
+	{
+		++numberOfCoins;
+		m -= 5;
+	}
+	numberOfCoins += m;
+
 	return numberOfCoins;
 }
 
 void test1()
 {
-	assert(get_change(2) == 2);
+	assert(get_change_naive(2) == 2);
 }
 
 void test2()
 {
-	assert(get_change(28) == 6);
+	assert(get_change_naive(28) == 6);
 }
 
 void testEdgeCases()
@@ -44,7 +57,7 @@ void testSuite()
 int main()
 {
 	int m{ 0 };
-	testSuite();
-//	std::cin >> m;
-	std::cout << get_change(m) << '\n';
+	//testSuite();
+	std::cin >> m;
+	std::cout << get_change_naive(m) << '\n';
 }
