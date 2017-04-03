@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <map>
 
 using std::vector;
 
@@ -7,6 +8,27 @@ double get_optimal_value(int capacity, vector<int> weights, vector<int> values) 
   double value = 0.0;
 
   // write your code here
+  std::map<double, int> sortedCoefPositions;
+  for (int i = 0; i < values.size(); i++)
+  {
+	  sortedCoefPositions.insert(std::make_pair((double)values[i] / (double)weights[i], i));
+  }
+  std::map<double, int>::const_reverse_iterator it;
+  for (it = sortedCoefPositions.crbegin(); it != sortedCoefPositions.crend(); it++)
+  {
+	  double coef = (*it).first;
+	  int index = (*it).second;
+	  if (capacity <= weights[index])
+	  {
+		  value += coef * capacity;
+		  break;
+	  }
+	  else
+	  {
+		  value += values[index];
+		  capacity -= weights[index];
+	  }
+  }
 
   return value;
 }
