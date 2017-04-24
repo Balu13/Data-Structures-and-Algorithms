@@ -32,14 +32,43 @@ int main() {
 
         if (next == '(' || next == '[' || next == '{') {
             // Process opening bracket, write your code here
+			Bracket opening(next, position);
+			opening_brackets_stack.push(opening);
         }
-
-        if (next == ')' || next == ']' || next == '}') {
+		else if (next == ')' || next == ']' || next == '}') {
             // Process closing bracket, write your code here
+			if (opening_brackets_stack.empty())
+			{
+				std::cout << position + 1 << "\n";
+				return 0;
+			}
+			Bracket opening = opening_brackets_stack.top();
+			if (!opening.Matchc(next))
+			{
+				std::cout << position + 1 << "\n";
+				return 0;
+			}
+			opening_brackets_stack.pop();
         }
     }
 
+	if (opening_brackets_stack.empty())
+	{
+		std::cout << "Success" << "\n";
+	}
+	else
+	{
+		Bracket *first { nullptr };
+		while (!opening_brackets_stack.empty())
+		{
+			first = &opening_brackets_stack.top();
+			opening_brackets_stack.pop();
+		}
+		std::cout << (*first).position + 1 << "\n";
+	}
+
     // Printing answer, write your code here
+
 
     return 0;
 }
