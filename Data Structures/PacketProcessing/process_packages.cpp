@@ -34,8 +34,20 @@ public:
 
     Response Process(const Request &request)
 	{
-        // write your code here
+		while (!finish_time_.empty() && finish_time_.front() <= request.arrival_time)
+		{
+			finish_time_.pop();
+		}
+		if (size_ == finish_time_.size())
+		{
+			return Response(true, request.arrival_time);
+		}
+
+		Response retVal = Response(false, finish_time_.empty() ? request.arrival_time : std::max(request.arrival_time, finish_time_.back()));
+		finish_time_.push(request.process_time + (finish_time_.empty() ? request.arrival_time : finish_time_.back()));
+		return retVal;
     }
+
 private:
     int size_;
     std::queue <int> finish_time_;
@@ -58,15 +70,19 @@ std::vector <Request> ReadRequests()
 std::vector <Response> ProcessRequests(const std::vector <Request> &requests, Buffer *buffer)
 {
     std::vector <Response> responses;
-    for (int i = 0; i < requests.size(); ++i)
-        responses.push_back(buffer->Process(requests[i]));
+	for (int i = 0; i < requests.size(); ++i)
+	{
+		responses.push_back(buffer->Process(requests[i]));
+	}
     return responses;
 }
 
 void PrintResponses(const std::vector <Response> &responses)
 {
-    for (int i = 0; i < responses.size(); ++i)
-        std::cout << (responses[i].dropped ? -1 : responses[i].start_time) << std::endl;
+	for (int i = 0; i < responses.size(); ++i)
+	{
+		std::cout << (responses[i].dropped ? -1 : responses[i].start_time) << std::endl;
+	}
 }
 
 int main()
