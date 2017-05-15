@@ -45,7 +45,7 @@ private:
 		// but in the worst case gives a quadratic number of swaps.
 		//
 		// TODO: replace by a more efficient implementation
-		for (int i = 0; i < data_.size(); ++i)
+		/*for (int i = 0; i < data_.size(); ++i)
 		{
 			for (int j = i + 1; j < data_.size(); ++j)
 			{
@@ -55,7 +55,54 @@ private:
 					swaps_.push_back(make_pair(i, j));
 				}
 			}
+		}*/
+		if (data_.size() > 1)
+		{
+			for (int i = data_.size() / 2; i >= 0; --i)
+			{
+				int j;
+				int current{ -1 };
+				while (i != (j = siftDown(i)))
+				{
+					if (current < 0)
+					{
+						current = i;
+					}
+					i = j;
+				}
+				if (current >= 0)
+				{
+					i = current;
+				}
+			}
 		}
+	}
+
+	int siftDown(int index)
+	{
+		int leftChild = 2 * index + 1;
+		if (leftChild >= data_.size())
+		{
+			return index;
+		}
+		int rightChild = leftChild + 1;
+		int test;
+		if (rightChild >= data_.size())
+		{
+			test = leftChild;
+		}
+		else
+		{
+			test = data_[leftChild] < data_[rightChild] ? leftChild : rightChild;
+		}
+
+		if (data_[index] > data_[test])
+		{
+			swap(data_[index], data_[test]);
+			swaps_.push_back(make_pair(index, test));
+		}
+
+		return test;
 	}
 
 public:
