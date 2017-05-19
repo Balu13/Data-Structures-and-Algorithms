@@ -27,7 +27,9 @@ struct DisjointSets
 	DisjointSets(int size) : size(size), max_table_size(0), sets(size)
 	{
 		for (int i = 0; i < size; i++)
+		{
 			sets[i].parent = i;
+		}
 	}
 
 	int getParent(int table)
@@ -60,7 +62,7 @@ int main()
 		tables.max_table_size = max(tables.max_table_size, table.size);
 	}
 
-	for (int i = 0; i < m; i++)
+/*	for (int i = 0; i < m; i++)
 	{
 		int destination, source;
 		cin >> destination >> source;
@@ -68,6 +70,22 @@ int main()
 		--source;
 
 		tables.merge(destination, source);
+		cout << tables.max_table_size << endl;
+	}
+*/
+	vector<std::pair<int, int>> merges;
+	for (int i = 0; i < m; i++)
+	{
+		int destination, source;
+		cin >> destination >> source;
+		--destination;
+		--source;
+		merges.push_back(std::make_pair(destination, source));
+	}
+
+	for (int j = 0; j < merges.size(); ++j)
+	{
+		tables.merge(merges[j].first, merges[j].second);
 		cout << tables.max_table_size << endl;
 	}
 
