@@ -17,6 +17,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MergingTables", "MergingTab
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PhoneBook", "PhoneBook\PhoneBook.vcxproj", "{DE869755-EB91-4759-A353-632500CE56ED}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HashChains", "HashChains\HashChains.vcxproj", "{3DDA7060-A893-48C8-8234-BABD5FE236DB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -81,6 +83,14 @@ Global
 		{DE869755-EB91-4759-A353-632500CE56ED}.Release|x64.Build.0 = Release|x64
 		{DE869755-EB91-4759-A353-632500CE56ED}.Release|x86.ActiveCfg = Release|Win32
 		{DE869755-EB91-4759-A353-632500CE56ED}.Release|x86.Build.0 = Release|Win32
+		{3DDA7060-A893-48C8-8234-BABD5FE236DB}.Debug|x64.ActiveCfg = Debug|x64
+		{3DDA7060-A893-48C8-8234-BABD5FE236DB}.Debug|x64.Build.0 = Debug|x64
+		{3DDA7060-A893-48C8-8234-BABD5FE236DB}.Debug|x86.ActiveCfg = Debug|Win32
+		{3DDA7060-A893-48C8-8234-BABD5FE236DB}.Debug|x86.Build.0 = Debug|Win32
+		{3DDA7060-A893-48C8-8234-BABD5FE236DB}.Release|x64.ActiveCfg = Release|x64
+		{3DDA7060-A893-48C8-8234-BABD5FE236DB}.Release|x64.Build.0 = Release|x64
+		{3DDA7060-A893-48C8-8234-BABD5FE236DB}.Release|x86.ActiveCfg = Release|Win32
+		{3DDA7060-A893-48C8-8234-BABD5FE236DB}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
