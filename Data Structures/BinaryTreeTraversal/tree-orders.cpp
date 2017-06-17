@@ -30,12 +30,51 @@ public:
 		}
 	}
 
+	void inOrderRecursive(int vertex, vector<int> &result)
+	{
+		if (left[vertex] != -1)
+		{
+			inOrderRecursive(left[vertex], result);
+		}
+		result.push_back(key[vertex]);
+		if (right[vertex] != -1)
+		{
+			inOrderRecursive(right[vertex], result);
+		}
+	}
+
+	void preOrderRecursive(int vertex, vector<int> &result)
+	{
+		result.push_back(key[vertex]);
+		if (left[vertex] != -1)
+		{
+			preOrderRecursive(left[vertex], result);
+		}
+		
+		if (right[vertex] != -1)
+		{
+			preOrderRecursive(right[vertex], result);
+		}
+	}
+
+	void postOrderRecursive(int vertex, vector<int> &result)
+	{
+		if (left[vertex] != -1)
+		{
+			postOrderRecursive(left[vertex], result);
+		}
+		if (right[vertex] != -1)
+		{
+			postOrderRecursive(right[vertex], result);
+		}
+		result.push_back(key[vertex]);
+	}
 
 	vector <int> in_order()
 	{
 		vector<int> result;
-		// Finish the implementation
-		// You may need to add a new recursive method to do that
+
+		inOrderRecursive(0, result);
 
 		return result;
 	}
@@ -43,8 +82,8 @@ public:
 	vector <int> pre_order()
 	{
 		vector<int> result;
-		// Finish the implementation
-		// You may need to add a new recursive method to do that
+
+		preOrderRecursive(0, result);
 
 		return result;
 	}
@@ -52,8 +91,8 @@ public:
 	vector <int> post_order()
 	{
 		vector<int> result;
-		// Finish the implementation
-		// You may need to add a new recursive method to do that
+
+		postOrderRecursive(0, result);
 
 		return result;
 	}
