@@ -16,9 +16,46 @@ struct Node {
   Node(int key_, int left_, int right_) : key(key_), left(left_), right(right_) {}
 };
 
+int sortedCheck{ 0 };
+
+bool traverseTree(int vertex, const vector<Node> &tree, int** previousSorted)
+{
+	if (tree[vertex].left != -1 && tree[tree[vertex].left].key >= tree[vertex].key ||
+		tree[vertex].right != -1 && tree[tree[vertex].right].key < tree[vertex].key)
+	{
+		return false;
+	}
+
+	if (tree[vertex].left != -1 && !traverseTree(tree[vertex].left, tree, previousSorted))
+	{
+		return false;
+	}
+
+	if (*previousSorted != nullptr)
+	{
+		if ((**previousSorted) > (tree[vertex].key))
+		{
+			return false;
+		}
+	}
+	else
+	{
+		*previousSorted = &sortedCheck;
+	}
+	**previousSorted = tree[vertex].key;
+
+	return tree[vertex].right == -1 || traverseTree(tree[vertex].right, tree, previousSorted);
+}
+
 bool IsBinarySearchTree(const vector<Node>& tree) {
-  // Implement correct algorithm here
-  return true;
+	if (tree.size() == 0)
+	{
+		return true;
+	}
+
+	int* pNull{ nullptr };
+
+	return traverseTree(0, tree, &pNull);
 }
 
 int main() {
@@ -30,7 +67,7 @@ int main() {
     cin >> key >> left >> right;
     tree.push_back(Node(key, left, right));
   }
-  if (IsBinarySearchTree(tree) {
+  if (IsBinarySearchTree(tree)) {
     cout << "CORRECT" << endl;
   } else {
     cout << "INCORRECT" << endl;
