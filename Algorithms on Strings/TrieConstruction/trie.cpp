@@ -7,13 +7,37 @@ using std::map;
 using std::vector;
 using std::string;
 
-typedef map<char, int> edges;
-typedef vector<edges> trie;
+typedef map<char, int> Node;
+typedef vector<Node> Trie;
 
-trie build_trie(vector<string> & patterns)
+Trie build_trie(vector<string> & patterns)
 {
-	trie t;
-	// write your code here
+	Trie t;
+	Node root;
+	t.push_back(root);
+	int maxIndex = 0;
+
+	for (string pattern : patterns)
+	{
+		int currentIndex = 0;
+		for (char symbol : pattern)
+		{
+			auto it = t[currentIndex].find(symbol);
+			if (it == t[currentIndex].end())
+			{
+				// insert tail of the pattern as new branch in the trie
+				Node newNode;
+				t.push_back(newNode);
+				t[currentIndex][symbol] = ++maxIndex;
+				currentIndex = maxIndex;
+			}
+			else
+			{
+				currentIndex = it->second;
+			}
+		}
+	}
+
 	return t;
 }
 
@@ -29,7 +53,7 @@ int main()
 		patterns.push_back(s);
 	}
 
-	trie t = build_trie(patterns);
+	Trie t = build_trie(patterns);
 	for (size_t i = 0; i < t.size(); ++i)
 	{
 		for (const auto & j : t[i])
