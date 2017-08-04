@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TrieConstruction", "TrieConstruction\TrieConstruction.vcxproj", "{99AC7026-0F8F-49EA-9153-9E1BD22BC705}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TrieMatching", "TrieMatching\TrieMatching.vcxproj", "{812E4229-CD1E-4C2A-BB48-9AC32686145C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,14 @@ Global
 		{99AC7026-0F8F-49EA-9153-9E1BD22BC705}.Release|x64.Build.0 = Release|x64
 		{99AC7026-0F8F-49EA-9153-9E1BD22BC705}.Release|x86.ActiveCfg = Release|Win32
 		{99AC7026-0F8F-49EA-9153-9E1BD22BC705}.Release|x86.Build.0 = Release|Win32
+		{812E4229-CD1E-4C2A-BB48-9AC32686145C}.Debug|x64.ActiveCfg = Debug|x64
+		{812E4229-CD1E-4C2A-BB48-9AC32686145C}.Debug|x64.Build.0 = Debug|x64
+		{812E4229-CD1E-4C2A-BB48-9AC32686145C}.Debug|x86.ActiveCfg = Debug|Win32
+		{812E4229-CD1E-4C2A-BB48-9AC32686145C}.Debug|x86.Build.0 = Debug|Win32
+		{812E4229-CD1E-4C2A-BB48-9AC32686145C}.Release|x64.ActiveCfg = Release|x64
+		{812E4229-CD1E-4C2A-BB48-9AC32686145C}.Release|x64.Build.0 = Release|x64
+		{812E4229-CD1E-4C2A-BB48-9AC32686145C}.Release|x86.ActiveCfg = Release|Win32
+		{812E4229-CD1E-4C2A-BB48-9AC32686145C}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
