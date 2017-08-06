@@ -4,13 +4,84 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <map>
 
 using namespace std;
 
-int const Letters =    4;
+//typedef map<char, int> Node;
+
+class Node
+{
+private:
+	map<char, int> edges;
+	char m_symbol;
+
+public:
+	Node() {}
+
+	Node(char symbol) : m_symbol(symbol)
+	{
+	}
+
+	char getSymbol()
+	{
+		return m_symbol;
+	}
+
+	bool isLeaf()
+	{
+		return edges.empty();
+	}
+
+	int findEdge(char nextSymbol)
+	{
+		auto it = edges.find(nextSymbol);
+		return it == edges.end() ? -1 : it->second;
+	}
+
+	void addEdge(char nextSymbol, int pos)
+	{
+		edges[nextSymbol] = pos;
+	}
+};
+
+typedef vector<Node> Trie;
+
+Trie build_trie(const vector<string> & patterns)
+{
+	Trie t;
+	Node root(' ');
+	t.push_back(root);
+	int maxIndex = 0;
+
+	for (string pattern : patterns)
+	{
+		int currentIndex = 0;
+		for (char symbol : pattern)
+		{
+			int next = t[currentIndex].findEdge(symbol);
+			if (next == -1)
+			{
+				// insert tail of the pattern as new branch in the trie
+				Node newNode(symbol);
+				t.push_back(newNode);
+				t[currentIndex].addEdge(symbol, ++maxIndex);
+				currentIndex = maxIndex;
+			}
+			else
+			{
+				currentIndex = next;
+			}
+		}
+	}
+
+	return t;
+}
+
+/*int const Letters =    4;
 int const NA      =   -1;
 
-struct Node
+/*struct Node
 {
 	int next [Letters];
 
@@ -24,7 +95,7 @@ struct Node
 	    return (next[0] == NA && next[1] == NA && next[2] == NA && next[3] == NA);
 	}
 };
-
+*/
 int letterToIndex (char letter)
 {
 	switch (letter)
@@ -37,11 +108,47 @@ int letterToIndex (char letter)
 	}
 }
 
+int match(Trie trie, const string & text)
+{
+	Node currentNode = trie[0];
+	int pos = -1;
+	int startPos = -1;
+
+	for (char textSymbol : text)
+	{
+		int res = currentNode.findEdge(textSymbol);
+		if (res == -1)
+		{
+			break;
+		}
+		++pos;
+		if (startPos == -1)
+		{
+			startPos = pos;
+		}
+		currentNode = trie[res];
+		if (currentNode.isLeaf())
+		{
+			break;
+		}
+	}
+
+	return currentNode.isLeaf() ? startPos : -1;
+}
+
 vector <int> solve (const string& text, int n, const vector <string>& patterns)
 {
 	vector <int> result;
 
-	// write your code here
+	Trie trie = build_trie(patterns);
+	for (int start = 0; start < text.size(); ++start)
+	{
+		int res = match(trie, text.substr(start, text.size() - start));
+		if (res != -1)
+		{
+			result.push_back(res + start);
+		}
+	}
 
 	return result;
 }
