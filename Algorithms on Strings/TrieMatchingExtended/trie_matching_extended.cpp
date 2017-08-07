@@ -4,41 +4,134 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <map>
 
 using namespace std;
 
-int const Letters =    4;
-int const NA      =   -1;
-
-struct Node
+class Node
 {
-	int next [Letters];
-	bool patternEnd;
+private:
+	map<char, int> edges;
+	char m_symbol;
+	bool m_isPatternEnd;
 
-	Node ()
+public:
+	Node() {}
+
+	Node(char symbol, bool isPatternEnd) : m_symbol(symbol), m_isPatternEnd(isPatternEnd)
 	{
-		fill (next, next + Letters, NA);
-		patternEnd = false;
+	}
+
+	char getSymbol()
+	{
+		return m_symbol;
+	}
+
+	bool isLeaf()
+	{
+		return edges.empty();
+	}
+
+	bool isPatternEnd()
+	{
+		return m_isPatternEnd;
+	}
+
+	void setPatternEnd()
+	{
+		m_isPatternEnd = true;
+	}
+
+	int findEdge(char nextSymbol)
+	{
+		auto it = edges.find(nextSymbol);
+		return it == edges.end() ? -1 : it->second;
+	}
+
+	void addEdge(char nextSymbol, int pos)
+	{
+		edges[nextSymbol] = pos;
 	}
 };
 
-int letterToIndex (char letter)
+typedef vector<Node> Trie;
+
+Trie build_trie(const vector<string> & patterns)
 {
-	switch (letter)
+	Trie t;
+	Node root(' ', false);
+	t.push_back(root);
+	int maxIndex = 0;
+
+	for (string pattern : patterns)
 	{
-		case 'A': return 0; break;
-		case 'C': return 1; break;
-		case 'G': return 2; break;
-		case 'T': return 3; break;
-		default: assert (false); return -1;
+		int currentIndex = 0;
+		for (char symbol : pattern)
+		{
+			int next = t[currentIndex].findEdge(symbol);
+			if (next == -1)
+			{
+				// insert tail of the pattern as new branch in the trie
+				Node newNode(symbol, false);
+				t.push_back(newNode);
+				t[currentIndex].addEdge(symbol, ++maxIndex);
+				currentIndex = maxIndex;
+			}
+			else
+			{
+				currentIndex = next;
+			}
+		}
+		t[currentIndex].setPatternEnd();
 	}
+
+	return t;
 }
 
-vector <int> solve (string text, int n, vector <string> patterns)
+int match(Trie trie, const string & text)
+{
+	Node currentNode = trie[0];
+	int pos = -1;
+	int startPos = -1;
+
+	for (char textSymbol : text)
+	{
+		int res = currentNode.findEdge(textSymbol);
+		if (res == -1)
+		{
+			break;
+		}
+		++pos;
+		if (startPos == -1)
+		{
+			startPos = pos;
+		}
+		currentNode = trie[res];
+		if (currentNode.isLeaf() || currentNode.isPatternEnd())
+		{
+			break;
+		}
+	}
+
+	return (currentNode.isLeaf() || currentNode.isPatternEnd()) ? startPos : -1;
+}
+
+vector <int> solve(const string& text, int n, const vector <string>& patterns)
 {
 	vector <int> result;
 
-	// write your code here
+	Trie trie = build_trie(patterns);
+	for (int start = 0; start < text.size(); ++start)
+	{
+		int res = match(trie, text.substr(start, text.size() - start));
+		if (res != -1)
+		{
+			if (std::find(result.begin(), result.end(), res + start) == result.end())
+			{
+				result.push_back(res + start);
+			}
+		}
+	}
 
 	return result;
 }

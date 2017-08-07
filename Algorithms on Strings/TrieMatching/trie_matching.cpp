@@ -8,8 +8,6 @@
 
 using namespace std;
 
-//typedef map<char, int> Node;
-
 class Node
 {
 private:
@@ -76,36 +74,6 @@ Trie build_trie(const vector<string> & patterns)
 	}
 
 	return t;
-}
-
-/*int const Letters =    4;
-int const NA      =   -1;
-
-/*struct Node
-{
-	int next [Letters];
-
-	Node ()
-	{
-		fill (next, next + Letters, NA);
-	}
-
-	bool isLeaf () const
-	{
-	    return (next[0] == NA && next[1] == NA && next[2] == NA && next[3] == NA);
-	}
-};
-*/
-int letterToIndex (char letter)
-{
-	switch (letter)
-	{
-		case 'A': return 0; break;
-		case 'C': return 1; break;
-		case 'G': return 2; break;
-		case 'T': return 3; break;
-		default: assert (false); return -1;
-	}
 }
 
 int match(Trie trie, const string & text)
